@@ -38,20 +38,17 @@ def make_report(portfolio, prices):
         rows.append(summary)
     return rows   
 
-portfolio = read_portfolio('Data/portfolio.csv')
-prices = read_prices('Data/prices.csv')
 
-total_cost =0.0
-current_value =0.0
-for s in portfolio:
-    total_cost += s['shares'] * s['price']
-    current_value += s['shares'] * prices[s['name']]
-report = make_report(portfolio, prices)
-headers = ('Name', 'Shares', 'Price', 'Change')
-print('%10s %10s %10s %10s' %headers)
-for r in report:
-    print('%10s %10d %10.2f %10.2f' %r)
-    
-print('Total cost:', total_cost)
-print('Current value:', current_value)
-print('Gain/Loss:',current_value -total_cost)
+def print_report(report):
+    headers = ('Name', 'Shares', 'Price', 'Change')
+    print('%10s %10s %10s %10s' %headers)
+    for r in report:
+        print('%10s %10d %10.2f %10.2f' %r) 
+
+def portfolio_report(portfolio_filename, prices_filename):
+    portfolio = read_portfolio(portfolio_filename)
+    prices = read_prices(prices_filename)
+
+    report = make_report(portfolio, prices)
+    print_report(report)
+portfolio_report('Data/portfolio.csv', ' Data/prices.csv')
