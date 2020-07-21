@@ -3,7 +3,7 @@
 # Exercise 3.3
 import csv
 
-def parse_csv(filename, select = None, types =None):
+def parse_csv(filename, select = None, types =None, has_headers=True):
   
     with open(filename) as f:
         rows = csv.reader(f)
@@ -23,7 +23,10 @@ def parse_csv(filename, select = None, types =None):
                 row = [ row[index] for index in indices]
             if types:
                 row = [func(val) for func, val in zip(types, row) ]  
-            record = dict(zip(headers, row))
+            if has_headers:
+                record = dict(zip(headers, row))
+            else:
+                record = tuple(row)
             records.append(record)
 
     return records
@@ -31,4 +34,6 @@ def parse_csv(filename, select = None, types =None):
 records = parse_csv('Data/portfolio.csv', types=[str, int, float])
 print(records)
 records = parse_csv('Data/portfolio.csv', types=[str, int, float], select = ['name', 'shares'])
+print(records)
+records = parse_csv('Data/prices.csv',types =[str, float], has_headers= False)
 print(records)
