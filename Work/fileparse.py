@@ -33,13 +33,14 @@ def parse_csv(filename, select = None, types =None, has_headers=True, delimiter=
 
     return records
 
-records = parse_csv('Data/portfolio.csv', types=[str, int, float])
-print(records)
-records = parse_csv('Data/portfolio.csv', types=[str, int, float], select = ['name', 'shares'])
-print(records)
-records = parse_csv('Data/prices.csv',types =[str, float], has_headers= False)
-print(records)
-records = parse_csv('Data/portfolio.dat',types =[str, int, float],delimiter=' ')
-print(records)
-#records = parse_csv('signif.txt.tsv'), types=[float, str, int], delimiter='\t', select=['EQ_PRIMARY', 'COUNTRY','YEAR'])
+if __name__ == "__main__":
+    records = parse_csv('Data/portfolio.csv', types=[str, int, float])
+    print(records)
+    records = parse_csv('Data/portfolio.csv', types=[str, int, float], select = ['name', 'shares'])
+    print(records)
+    records = parse_csv('Data/prices.csv',types =[str, float], has_headers= False)
+    print(records)
+    records = parse_csv('Data/portfolio.dat',types =[str, int, float],delimiter=' ')
+    print(records)
+    #records = parse_csv('signif.txt.tsv'), types=[float, str, int], delimiter='\t', select=['EQ_PRIMARY', 'COUNTRY','YEAR'])
 
