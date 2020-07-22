@@ -5,15 +5,15 @@ import csv
 from fileparse import parse_csv
 
 def read_portfolio(filename):
-
-    portfolio = parse_csv(filename, select=['name', 'shares', 'price'], types=[str, int, float])
+    with open(filename) as filename:
+        portfolio = parse_csv(filename, select=['name', 'shares', 'price'], types=[str, int, float])
 
     return portfolio
 
 def read_prices(filename):
-    
-    prices = parse_csv(filename, has_headers=False, types=[str, float])
-    prices = dict(prices)
+    with open(filename) as filename:
+        prices = parse_csv(filename, has_headers=False, types=[str, float])
+        prices = dict(prices)
 
     return prices   
 
