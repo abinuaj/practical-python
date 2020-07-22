@@ -42,7 +42,6 @@ def portfolio_report(portfolio_filename, prices_filename):
 #portfolio_report('Data/portfolio.csv', 'Data/prices.csv')
 
 if __name__ =='__main__':
-
     import sys
     if len(sys.argv) != 2:
         print('Usage: python report.py <portfolio.csv> <prices.csv>')
