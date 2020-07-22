@@ -12,3 +12,7 @@ else:
 
 cost = portfolio_cost(filename)
 print('Total cost:', cost)
+if __name__ == '__main__':
+    import sys
+    main(sys.argv)
+
