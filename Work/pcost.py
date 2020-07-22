@@ -1,19 +1,8 @@
-import csv
+import report as rep
 def portfolio_cost(filename):
-    total_cost = 0.0
-    with open(filename, 'rt') as f:
-        rows = csv.reader(f)
-        headers = next(rows)
-        for rowno, row in enumerate(rows, start =2):
-            record = dict(zip(headers, row))
-            try:
-                nshares = int(record['shares'])
-                price = float(record['price'])
-                total_cost += nshares * price
-            except ValueError:
-                print(f'Row{rowno}: Bad row: {row}')
+    portfolio = rep.read_portfolio(filename)
+    return sum([s['shares'] * s['price'] for s in portfolio])
 
-    return total_cost
 
 import sys
 if len(sys.argv) == 2:

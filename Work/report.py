@@ -18,11 +18,11 @@ def read_prices(filename):
     return prices   
 
 def make_report(portfolio, prices):
-    rows =[ ]
+    rows =[]
     for holdings in portfolio:
-        currentprice = prices[holdings['name']]
-        change = currentprice - holdings['price']
-        summary = (holdings['name'], holdings['shares'], currentprice, change)
+        current_price = prices[holdings['name']]
+        change = current_price - holdings['price']
+        summary = (holdings['name'], holdings['shares'], current_price, change)
         rows.append(summary)
     return rows   
 
@@ -39,4 +39,4 @@ def portfolio_report(portfolio_filename, prices_filename):
 
     report = make_report(portfolio, prices)
     print_report(report)
-portfolio_report('Data/portfolio.csv', ' Data/prices.csv')
+portfolio_report('Data/portfolio.csv', 'Data/prices.csv')
